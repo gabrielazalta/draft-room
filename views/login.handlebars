@@ -1,33 +1,27 @@
-<form class="login-form">
-  <div>
-    <label for="email-login">email:</label>
-    <input type="text" id="email-login" />
-  </div>
-  <div>
-    <label for="password-login">password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">login</button>
-  </div>
-</form>
+{{!-- login form --}}
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class=" p-3 m-5 border border-5 rounded col-8">
 
-<form class="signup-form">
-  <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
+      <h3 class="p-1">LOGIN</h3>
+      <form class="login-form m-3 p-3">
+        <div class="mb-3">
+          <label for="email-login" class="form-label">username</label>
+          <input type="text" class="form-control" id="email-login">
+        </div>
+        <div class="mb-3">
+          <label for="password-login" class="form-label">password</label>
+          <input type="password" class="form-control" id="password-login">
+        </div>
+        <button type="submit" class="btn btn-warning">login</button>
+      </form>
+
+      </br>
+      <a class="text-secondary" href="/"> &larr; back</a>
+
+    </div>
   </div>
-  <div>
-    <label for="email-signup">email:</label>
-    <input type="text" id="email-signup" />
-  </div>
-  <div>
-    <label for="password-signup">password:</label>
-    <input type="password" id="password-signup" />
-  </div>
-  <div>
-    <button type="submit">signup</button>
-  </div>
-</form>
+</div>
+
 
 <script src="/javascript/login.js"></script>

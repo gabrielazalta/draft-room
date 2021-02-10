@@ -1,31 +1,71 @@
-<section>
-    <h2>Create New Post</h2>
-
-    <form class="new-post-form">
-        <div>
-            <label for="post-title">Title</label>
-            <input type="text" id="post-title" name="post-title" />
+<div class="container">
+<div class="row">
+{{!-- your posts --}}
+<div class="card post m-2 p-2 col-12" style="width: 18rem;">
+    {{!-- display username here --}}
+    <section>
+    <h3 class="my-4 text-secondary">{username}</h3>
+        <div class="card-body title">
+            <h4 class="card-title">{some info about the user}</h4>
+            <h5></h5>
+            <p class="card-text text-muted">{some more info aboput the user?}</p>
+            </h5>
+            <a class="card-link">{some link for the user?}</a>
         </div>
-        <div>
-            <label for="post-url">Link</label>
-            <input id="post-url" name="post-url" />
-        </div>
-        <button type="submit" class="btn">Create</button>
-    </form>
-</section>
+    </section>
+</div>
 
-{{#if posts.length}}
-<section>
-    <h2>Your Posts</h2>
-    <ol>
+
+{{!-- your posts --}}
+<div class="card post m-2 p-2 col" style="width: 18rem;">
+    <h3 class="my-4">your posts:</h3>
+    {{#if posts.length}}
+    <section class="m-2 p-2">
         {{#each posts as |post|}}
-        <li>
-            {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-        </li>
+        <div class="card-body title">
+            <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
+                    class="edit-link text-dark textFont">{{title}}</a></h4>
+            <h5></h5>
+            <p class="card-text text-muted">{{format_url post_url}}</p>
+            </h5>
+            <a class="card-link"><a href="/post/{{id}}" class="text-info textFont">{{comments.length}}
+                    {{format_plural "comment" comments.length}}</a></a>
+        </div>
         {{/each}}
-    </ol>
-</section>
-{{/if}}
+        {{else}}
+        <h5 class="textFont">no posts yet, add one now!</h5>
+        {{/if}}
+        </br>
+        <button type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white" href="/new-post">add a new
+                post</a></button>
+        </br>
+    </section>
+</div>
+
+{{!-- favorite posts --}}
+<div class="card post m-2 p-2 col" style="width: 18rem;">
+    <h3 class="my-4">favorites:</h3>
+    {{#if posts.length}}
+    <section class="m-2 p-2">
+        {{#each posts as |post|}}
+        <div class="card-body title">
+            <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
+                    class="edit-link text-dark textFont">{{title}}</a></h4>
+            <h5></h5>
+            <p class="card-text text-muted">{{format_url post_url}}</p>
+            </h5>
+            <a class="card-link"><a href="/post/{{id}}" class="text-info textFont">{{comments.length}}
+                    {{format_plural "comment" comments.length}}</a></a>
+        </div>
+        {{/each}}
+        {{else}}
+        <h5 class="textFont">no favorites to show yet!</h5>
+        {{/if}}
+    </section>
+</div>
+
+</div>
+</div>
+
 
 <script src="/javascript/add-post.js"></script>
