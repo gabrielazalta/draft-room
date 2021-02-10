@@ -7,6 +7,27 @@ const {
     Vote
 } = require('../models');
 
+
+router.get('/', (req, res) => {
+    res.render('landing-page')
+});
+
+router.get('/signup', (req, res) => {
+    res.render('signup')
+});
+
+router.get('/login', (req, res) => {
+    res.render('login')
+});
+
+router.get('/homepage', (req, res) => {
+    res.render('homepage')
+});
+
+router.get('/new-post', (req, res) => {
+    res.render('new-post')
+});
+
 // get all posts for homepage
 router.get('/', (req, res) => {
     console.log('======================');
@@ -96,10 +117,10 @@ router.get('/post/:id', (req, res) => {
                 plain: true
             });
 
-            res.render('single-post', {
-                post,
-                loggedIn: req.session.loggedIn
-            });
+            // res.render('single-post', {
+            //     post,
+            //     loggedIn: req.session.loggedIn
+            // });
 
         })
         .catch(err => {
