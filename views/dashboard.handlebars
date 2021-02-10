@@ -1,52 +1,63 @@
-{{!-- your posts --}}
-<div class="card post m-2 p-2 col" style="width: 18rem;">
-    <h3 class="my-4">your posts:</h3>
-    {{#if posts.length}}
-    <section class="m-2 p-2">
-        {{#each posts as |post|}}
-        <div class="card-body title">
-            <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
-                    class="edit-link text-dark textFont">{{title}}</a></h4>
-            <h5></h5>
-            <p class="card-text text-muted">{{format_url post_url}}</p>
-            </h5>
-            <a class="card-link"><a href="/post/{{id}}" class="text-info textFont">{{comments.length}}
-                    {{format_plural "comment" comments.length}}</a></a>
+<div class="container">
+    <div class="row">
+        {{!-- user profile --}}
+        <div class="card post m-2 p-2 col-12" style="width: 18rem;">
+            <h3 class="my-4">welcome {username}!</h3>
+            <h4>{some user info?}</h4>
+            <h5>{some more info here}</h5>
+            </section>
         </div>
-        {{/each}}
-        {{else}}
-        <h5 class="textFont">no posts yet, add one now!</h5>
-        {{/if}}
-        </br>
-        <button type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white" href="/new-post">add a new
-                post</a></button>
-        </br>
-    </section>
-</div>
 
-{{!-- favorite posts --}}
-<div class="card post m-2 p-2 col" style="width: 18rem;">
-    <h3 class="my-4">favorites:</h3>
-    {{#if posts.length}}
-    <section class="m-2 p-2">
-        {{#each posts as |post|}}
-        <div class="card-body title">
-            <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
-                    class="edit-link text-dark textFont">{{title}}</a></h4>
-            <h5></h5>
-            <p class="card-text text-muted">{{format_url post_url}}</p>
-            </h5>
-            <a class="card-link"><a href="/post/{{id}}" class="text-info textFont">{{comments.length}}
-                    {{format_plural "comment" comments.length}}</a></a>
+        {{!-- your posts --}}
+        <div class="card post m-2 p-2 col" style="width: 18rem;">
+            <h3 class="my-4">your posts:</h3>
+            {{#if posts.length}}
+            <section class="m-2 p-2">
+                {{#each posts as |post|}}
+                <div class="card-body title">
+                    <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
+                            class="edit-link text-dark textFont">{{title}}</a></h4>
+                    <h5></h5>
+                    <p class="card-text text-muted">{{format_url post_url}}</p>
+                    </h5>
+                    <a class="card-link"><a href="/post/{{id}}" class="text-info textFont">{{comments.length}}
+                            {{format_plural "comment" comments.length}}</a></a>
+                </div>
+                {{/each}}
+                {{else}}
+                <h5 class="textFont">no posts yet, add one now!</h5>
+                {{/if}}
+                </br>
+                <button type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white" href="/new-post">add a
+                        new
+                        post</a></button>
+                </br>
+            </section>
         </div>
-        {{/each}}
-        {{else}}
-        <h5 class="textFont">no favorites to show yet!</h5>
-        {{/if}}
-    </section>
-</div>
 
-</div>
+        {{!-- favorite posts --}}
+        <div class="card post m-2 p-2 col" style="width: 18rem;">
+            <h3 class="my-4">favorites:</h3>
+            {{#if posts.length}}
+            <section class="m-2 p-2">
+                {{#each posts as |post|}}
+                <div class="card-body title">
+                    <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
+                            class="edit-link text-dark textFont">{{title}}</a></h4>
+                    <h5></h5>
+                    <p class="card-text text-muted">{{format_url post_url}}</p>
+                    </h5>
+                    <a class="card-link"><a href="/post/{{id}}" class="text-info textFont">{{comments.length}}
+                            {{format_plural "comment" comments.length}}</a></a>
+                </div>
+                {{/each}}
+                {{else}}
+                <h5 class="textFont">no favorites to show yet!</h5>
+                {{/if}}
+            </section>
+        </div>
+
+    </div>
 </div>
 
 
