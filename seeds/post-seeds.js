@@ -4,17 +4,17 @@ const postdata = [
   {
     title: 'This is a cool blog!.',
     post_url: 'https://buzzfeed.com/in/imperdiet/et/commodo/vulputate.png',
-    user_id: 10
+    user_id: 1
   },
   {
     title: 'This blog is cooler blog!',
     post_url: 'https://nasa.gov/donec.json',
-    user_id: 8
+    user_id: 2
   },
   {
     title: 'Check this out!',
     post_url: 'https://europa.eu/parturient/montes/nascetur/ridiculus/mus/etiam/vel.aspx',
-    user_id: 1
+    user_id: 3
   },
 
 ];
