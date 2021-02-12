@@ -8,22 +8,7 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    User.findOne({
-        where: {
-            id: req.session.user_id
-        },
-        include: [{
-            model: Post,
-            attributes: ['id', 'title', 'content', 'user_id']
-        }]
-    }).then(dbUserData => {
-        res.render('dashboard', {
-            loggedIn: req.session.loggedIn,
-            user: dbUserData.dataValues
-        })
-    })
-});
+
 
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
@@ -68,6 +53,23 @@ router.get('/', withAuth, (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+});
+
+router.get('/', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.session.user_id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content', 'user_id']
+        }]
+    }).then(dbUserData => {
+        res.render('dashboard', {
+            loggedIn: req.session.loggedIn,
+            user: dbUserData.dataValues
+        })
+    })
 });
 
 router.get('/edit/:id', withAuth, (req, res) => {
