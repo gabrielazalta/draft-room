@@ -9,7 +9,7 @@ const {
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    res.render('dashboard')
+    res.render('dashboard' , {loggedIn:req.session.loggedIn})
 });
 
 // get all posts for dashboard

@@ -9,6 +9,7 @@ const {
 
 
 router.get('/', (req, res) => {
+    console.log(req.session)
     res.render('landing-page')
 });
 
@@ -21,11 +22,11 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/homepage', (req, res) => {
-    res.render('homepage')
+    res.render('homepage', {loggedIn:req.session.loggedIn})
 });
 
 router.get('/new-post', (req, res) => {
-    res.render('new-post')
+    res.render('new-post' ,{loggedIn:req.session.loggedIn})
 });
 
 // get all posts for homepage
