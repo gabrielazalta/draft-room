@@ -1,14 +1,14 @@
-// const createPostBtn = document.querySelector('#create-post');
+const createPostBtn = document.querySelector('#create-post');
 
-// function toggleHide(event) {
-//     createPostBtn.classList.add('hide');
-// };
+function toggleHide(event) {
+    createPostBtn.classList.add('hide');
+};
 
 async function newFormHandler(event) {
     event.preventDefault();
 
     const title = document.querySelector('input[name="post-title"]').value;
-    const content = document.querySelector('input[name="post-url"]').value;
+    const content = document.querySelector('input[name="content"]').value;
 
     const response = await fetch(`/api/posts`, {
         method: 'POST',
@@ -29,4 +29,4 @@ async function newFormHandler(event) {
 }
 
 document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
-// createPostBtn.addEventListener('click', toggleHide);
+createPostBtn.addEventListener('click', toggleHide);

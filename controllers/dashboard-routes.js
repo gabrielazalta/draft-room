@@ -8,9 +8,7 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    res.render('dashboard' , {loggedIn:req.session.loggedIn})
-});
+
 
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
@@ -42,6 +40,7 @@ router.get('/', withAuth, (req, res) => {
             ]
         })
         .then(dbPostData => {
+            console.log(dbPostData);
             const posts = dbPostData.map(post => post.get({
                 plain: true
             }));
