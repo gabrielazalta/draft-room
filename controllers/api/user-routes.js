@@ -178,7 +178,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-//create a bio
+//create/edit a bio
 router.post('/bio', (req, res) => {
   console.log(req.body);
   console.log(req.session);

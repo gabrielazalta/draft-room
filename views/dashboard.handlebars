@@ -1,27 +1,27 @@
 <div class="container">
     <div class="row">
         {{!-- user profile --}}
-        <div class="myUsername card post m-2 p-2 col-12" style="width: 18rem;">
-            <h3 class="my-4">welcome {{user.username}}!</h3>
+        <div class="myUsername border border-warning card post m-2 p-2 col-12" style="width: 18rem;">
+            <h3 class="p-2 my-4">welcome <a class="text-secondary text-decoration-none">{{user.username}}!  </a><i class=" text-warning fa fa-hand-peace-o"></i></h3>
             <form class="bio-form mb-3">
                 {{#unless user.bio}}
                 <textarea name="bio-text" placeholder="tell us about yourself and favorite beers!" class="form-control bio-text" rows="3"></textarea>
-                <button id="bio" type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white" href="">submit</a></button>
+                <button id="bio" type="submit" class="btn btn-light m-2 p-2"><a class="link text-decoration-none text-warning" href="">submit</a></button>
                 {{/unless}}
                 {{#if user.bio}}
-                <p class= "m-1 p-1">{{user.bio}}</p>
-                <button id="bio" type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white" href="">edit</a></button>
+                <p name="user-bio" class= "m-1 p-1">{{user.bio}}</p>
+                <button id="bio" type="submit" class="btn btn-light m-2 p-2"><a class="link text-decoration-none text-warning" href="">edit</a></button>
                 {{/if}}
             </form>
         </div>
 
         {{!-- your posts --}}
-        <div class="card post m-2 p-2 col" style="width: 18rem;">
-            <h3 class="my-4">your posts:</h3>
+        <div class="card post m-2 p-2 col border-warning" style="width: 18rem;">
+            <h3 class="p-2 my-4">your posts:</h3>
             {{#if posts.length}}
             <section class="m-2 p-2">
                 {{#each posts as |post|}}
-                <div class="card-body title">
+                <div class="p-2 card-body title">
                     <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
                             class="edit-link text-dark textFont">{{title}}</a></h4>
                     <h5></h5>
@@ -32,10 +32,10 @@
                 </div>
                 {{/each}}
                 {{else}}
-                <h5 class="textFont">no posts yet, add one now!</h5>
+                <h5 class="p-3 textFont">no posts yet, add one now!</h5>
                 {{/if}}
                 </br>
-                <button type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white" href="/new-post">add a
+                <button type="submit" class="btn btn-light m-2 p-2"><a class="link text-decoration-none text-warning" href="/new-post">add a
                         new
                         post</a></button>
                 </br>
@@ -43,12 +43,12 @@
         </div>
 
         {{!-- favorite posts --}}
-        <div class="card post m-2 p-2 col" style="width: 18rem;">
-            <h3 class="my-4">favorites:</h3>
+        <div class="card post m-2 p-2 col border-warning" style="width: 18rem;">
+            <h3 class="p-2 my-4">favorites:</h3>
             {{#if posts.length}}
             <section class="m-2 p-2">
                 {{#each posts as |post|}}
-                <div class="card-body title">
+                <div class="p-2 card-body title">
                     <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
                             class="edit-link text-dark textFont">{{title}}</a></h4>
                     <h5></h5>
@@ -59,7 +59,7 @@
                 </div>
                 {{/each}}
                 {{else}}
-                <h5 class="textFont">no favorites to show yet!</h5>
+                <h5 class="p-3 textFont">no favorites to show yet!</h5>
                 {{/if}}
             </section>
         </div>
@@ -69,3 +69,4 @@
 
 
 <script src="/javascript/dashboard.js"></script>
+<script src="/javascript/add-post.js"></script>
