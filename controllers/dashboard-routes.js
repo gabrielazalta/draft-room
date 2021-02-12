@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
         },
         include: [{
             model: Post,
-            attributes: ['id', 'title', 'post_url', 'user_id']
+            attributes: ['id', 'title', 'content', 'user_id']
         }]
     }).then(dbUserData => {
         res.render('dashboard', {
