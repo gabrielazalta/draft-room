@@ -1,7 +1,7 @@
 //new bio
 async function newBio (event) {
     event.preventDefault();
-
+console.log("click button");
     const bio = document.querySelector('textarea[name="bio-text"]').value.trim();
 
     if (bio) {
@@ -23,4 +23,5 @@ async function newBio (event) {
     }
 }
 
-document.querySelector('.bio-form').addEventListener('submit', newBio);
+document.getElementById('bio').addEventListener('click', newBio);
+console.log(document.getElementById('bio'))
