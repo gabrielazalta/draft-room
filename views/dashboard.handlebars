@@ -21,17 +21,6 @@
             <h3 class="p-2 my-4">your posts:</h3>
             {{#if posts.length}}
             <section class="m-2 p-2">
-                {{#each posts as |post|}}
-                <div class="p-2 card-body title">
-                    <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
-                            class="edit-link text-dark textFont">{{post.title}}</a></h4>
-                    <h5></h5>
-                    <p class="card-text text-muted">{{post.content}}</p>
-                    </h5>
-                    <a class="card-link"><a href="/post/{{id}}" class="text-info">{{comments.length}}
-                            {{format_plural "comment" comments.length}}</a></a>
-                </div>
-                {{/each}}
                 {{else}}
                 <h5 class="p-3 textFont">no posts yet, add one now!</h5>
                 {{/if}}

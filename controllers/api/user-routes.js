@@ -180,40 +180,4 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-
-//create/edit a bio
-router.post('/bio', (req, res) => {
-  // console.log(req.body);
-  // console.log(req.session);
-  User.update({
-      bio: req.body.bio,
-    }, {
-      where: {
-        id: req.session.user_id
-      }
-    })
-    .then(dbUserData => {
-      res.json(dbUserData)
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-
-    });
-});
-
-// router.get('/bio', (req, res) => {
-//     User.findAll({
-  
-//     })
-//   })
-//   .then(dbUserData => {
-//     res.json(dbUserData)
-//   })
-//   .catch(err => {
-//     console.log(err);
-//     res.status(500).json(err);
-
-//   });
-
 module.exports = router;
