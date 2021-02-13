@@ -28,5 +28,5 @@ async function newFormHandler(event) {
     }
 }
 
-document.querySelector('#new-post-form').addEventListener('submit', newFormHandler);
+document.getElementById('new-post-form').addEventListener('submit', newFormHandler);
 createPostBtn.addEventListener('click', toggleHide);
