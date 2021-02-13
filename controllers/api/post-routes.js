@@ -78,7 +78,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
-  console.log(req.body);
+  // console.log(req.body);
   Post.create({
     title: req.body.title,
     content: req.body.content,
@@ -126,7 +126,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.id);
+  // console.log('id', req.params.id);
   Post.destroy({
     where: {
       id: req.params.id

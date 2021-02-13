@@ -8,27 +8,10 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    User.findOne({
-        where: {
-            id: req.session.user_id
-        },
-        include: [{
-            model: Post,
-            attributes: ['id', 'title', 'content', 'user_id']
-        }]
-    }).then(dbUserData => {
-        res.render('dashboard', {
-            loggedIn: req.session.loggedIn,
-            user: dbUserData.dataValues
-        })
-    })
-});
-
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
-    console.log(req.session);
-    console.log('======================');
+    // console.log(req.session);
+    // console.log('======================');
     Post.findAll({
             where: {
                 user_id: req.session.user_id
@@ -45,20 +28,20 @@ router.get('/', withAuth, (req, res) => {
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
-                        attributes: ['username']
+                        attributes: ['username', 'bio']
                     }
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'bio']
                 }
             ]
         })
         .then(dbPostData => {
-            console.log(dbPostData);
             const posts = dbPostData.map(post => post.get({
                 plain: true
             }));
+            // console.log(posts[0].user.bio);
             res.render('dashboard', {
                 posts,
                 loggedIn: true
