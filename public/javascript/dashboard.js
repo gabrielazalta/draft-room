@@ -5,7 +5,7 @@ async function newBio(event) {
     const bio = document.querySelector('textarea[name="bio-text"]').value.trim();
 
     if (bio) {
-        const response = await fetch('/api/bio', {
+        const response = await fetch('/api/users/bio', {
             method: 'POST',
             body: JSON.stringify({
                 bio

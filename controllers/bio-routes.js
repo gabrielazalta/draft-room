@@ -4,7 +4,7 @@ const {
     Post,
     Comment,
     Vote
-} = require('../../models');
+} = require('../models');
 
 router.get('/', (req, res) => {
     User.findOne({
@@ -16,8 +16,6 @@ router.get('/', (req, res) => {
             attributes: ['id', 'title', 'content', 'user_id']
         }]
     }).then(dbUserData => {
-        console.log("||||||||||||||||||||||||")
-        console.log(dbUserData);
         res.render('dashboard', {
             loggedIn: req.session.loggedIn,
             user: dbUserData.dataValues
@@ -35,6 +33,8 @@ router.post('/', (req, res) => {
             }
         })
         .then(dbUserData => {
+            console.log("||||||||||||||||||||||||")
+        console.log(dbUserData);
             res.json(dbUserData)
         })
         .catch(err => {

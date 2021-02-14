@@ -8,6 +8,24 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 
+router.get('/', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.session.user_id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content', 'user_id']
+        }]
+    }).then(dbUserData => {
+        res.render('dashboard', {
+            loggedIn: req.session.loggedIn,
+            user: dbUserData.dataValues
+        })
+    })
+});
+
+
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
     // console.log(req.session);
@@ -42,9 +60,11 @@ router.get('/', withAuth, (req, res) => {
                 plain: true
             }));
             // console.log(posts[0].user.bio);
+            console.log(dbPostData.post);
             res.render('dashboard', {
+                // user: dbUserData.dataValues,
                 posts,
-                loggedIn: true
+                loggedIn: true,
             });
         })
         .catch(err => {
