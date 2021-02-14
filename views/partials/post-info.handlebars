@@ -1,7 +1,7 @@
 <article class="post">
     <div class="title">
-        <a href="{{content}}" target="_blank">{{title}}</a>
-        <span>({{content}})</span>
+        <a href="{{user.posts.content}}" target="_blank">{{user.posts.title}}</a>
+        <span>({{user.posts.content}})</span>
     </div>
     <div class="meta">
         {{vote_count}} {{"point" vote_count}} by {{user.username}} on {{format_date created_at}}

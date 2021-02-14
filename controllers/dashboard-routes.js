@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
     })
 });
 
-
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
     // console.log(req.session);
