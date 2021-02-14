@@ -25,29 +25,29 @@ async function newBio(event) {
 
 document.getElementById('bio').addEventListener('click', newBio);
 
-// // //edit bio
-// async function editBio(event) {
-//     event.preventDefault();
+// //edit bio
+async function editBio(event) {
+    event.preventDefault();
 
-//     const bio = document.querySelector('p[name="user-bio"]');
-//     console.log("this is the bio variable");
-//     console.log(bio);
+    const bio = document.querySelector('p[name="user-bio"]');
+    console.log("this is the bio variable");
+    console.log(bio);
 
-//     const response = await fetch(`/api/users/bio`, {
-//         method: 'POST',
-//         body: JSON.stringify({
-//             bio
-//         }),
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     });
+    const response = await fetch(`/api/users/bio`, {
+        method: 'POST',
+        body: JSON.stringify({
+            bio
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
 
-//     if (response.ok) {
-//         document.location.replace('/dashboard/');
-//     } else {
-//         alert(response.statusText);
-//     }
-// }
+    if (response.ok) {
+        document.location.replace('/dashboard/');
+    } else {
+        alert(response.statusText);
+    }
+}
 
-// document.getElementById('editBio').addEventListener('click', editBio);
+document.getElementById('editBio').addEventListener('click', editBio);
