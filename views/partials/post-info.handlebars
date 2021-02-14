@@ -1,11 +1,9 @@
 <article class="post">
-    <div class="title">
-        <a href="{{user.posts.content}}" target="_blank">{{user.posts.title}}</a>
-        <span>({{user.posts.content}})</span>
-    </div>
-    <div class="meta">
-        {{vote_count}} {{"point" vote_count}} by {{user.username}} on {{format_date created_at}}
-        |
-        <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-    </div>
+    <form class="comment-form post m-2 p-2">
+        <div class="form-group title textFont">
+            <h4 href="{{content}}" target="_blank" class="text-body font-weight-bold"><a href="/post/{{id}}" target="_blank" class="textFont text-body">{{title}}</a></h4>
+            <h5><p class="card-text text-muted">{{content}}</p></h5>
+            <p class="text-info">Posted by {{user.username}} on {{format_date created_at}}</p>
+        </div>
+    </form>
 </article>

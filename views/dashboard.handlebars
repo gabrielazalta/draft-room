@@ -22,9 +22,9 @@
         {{!-- your posts --}}
         <div class="card post m-2 p-2 col border-warning" style="width: 18rem;">
             <h3 class="p-2 my-4">your posts:</h3>
-            {{#if user.posts.length}}
+            {{#if posts.length}}
             <section class="m-2 p-2">
-                {{#each user.posts as |post|}}
+                {{#each posts as |post|}}
                 <div class="p-2 card-body title">
                     <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
                             class="edit-link text-dark">{{post.title}}</a></h4>
@@ -50,7 +50,7 @@
         {{!-- favorite posts --}}
         <div class="card post m-2 p-2 col border-warning" style="width: 18rem;">
             <h3 class="p-2 my-4">favorites:</h3>
-            {{#if posts.length}}
+            {{!-- {{#if posts.length}}
             <section class="m-2 p-2">
                 {{#each posts as |post|}}
                 <div class="p-2 card-body title">
@@ -63,9 +63,9 @@
                             {{format_plural "comment" comments.length}}</a></a>
                 </div>
                 {{/each}}
-                {{else}}
+                {{else}} --}}
                 <h5 class="p-3 textFont">no favorites to show yet!</h5>
-                {{/if}}
+                {{!-- {{/if}} --}}
             </section>
         </div>
 
