@@ -2,7 +2,7 @@ const { Post } = require('../models');
 
 const postdata = [
   {
-    title: 'This is a cool blog!.',
+    title: 'This is a cool blog!',
     content: 'https://buzzfeed.com/in/imperdiet/et/commodo/vulputate.png',
     user_id: 1
   },

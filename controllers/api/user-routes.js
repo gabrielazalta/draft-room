@@ -13,7 +13,10 @@ router.get('/', (req, res) => {
         exclude: ['password']
       }
     })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+      res.json(dbUserData)
+      // console.log(dbUserData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -182,7 +185,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-
+//create/edit a bio
 router.post('/bio', (req, res) => {
   console.log(req.body);
   console.log(req.session);

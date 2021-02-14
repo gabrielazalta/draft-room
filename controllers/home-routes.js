@@ -9,7 +9,7 @@ const {
 
 
 router.get('/', (req, res) => {
-    console.log(req.session)
+    // console.log(req.session)
     res.render('landing-page')
 });
 
