@@ -30,10 +30,10 @@ document.getElementById('bio').addEventListener('click', newBio);
 async function editBio(event) {
     event.preventDefault();
 
-    const bio = document.querySelector('p[name="user-bio"]').value.trim();
+    const bio = document.querySelector('p[name="user-bio"]').value;
 
     const response = await fetch(`/api/users/bio`, {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify({
             bio
         }),
