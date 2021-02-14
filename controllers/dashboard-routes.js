@@ -59,10 +59,8 @@ router.get('/', withAuth, (req, res) => {
             const posts = dbPostData.map(post => post.get({
                 plain: true
             }));
-            // console.log(posts[0].user.bio);
             console.log(dbPostData.post);
             res.render('dashboard', {
-                // user: dbUserData.dataValues,
                 posts,
                 loggedIn: true,
             });
