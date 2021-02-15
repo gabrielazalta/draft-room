@@ -23,6 +23,12 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    bio: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

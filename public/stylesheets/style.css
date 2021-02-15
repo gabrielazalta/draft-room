@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --primary-color: #FFC108;
+    --secondary-color: #D19602;
+    --tertiary-color: #ADADAD;
+    --quaternary-color: #EAEAEA;
+  }

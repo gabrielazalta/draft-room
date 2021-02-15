@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 2 name here</title>
+    <title>Draft Room</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="wrapper">
         <header class="h-100">
             <h3 class="ml-2 m-3 p-2">
-                <a href="/" class="fw-light text-secondary text-decoration-none">{logo+project name}</a>
+                <a href="/" class="fw-light text-secondary text-decoration-none">{draft room}</a>
             </h3>
         </header>
 
-  
+
         {{!-- navbar --}}
         {{#if loggedIn}}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -37,20 +38,17 @@
                     </ul>
                 </div>
                 <a class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-warning m-2 p-2"><a class="link text-white"
-                            href="/new-post">add a new
-                            post</a></button>
+                    <button type="submit" class="btn btn-outline-warning"><a class="link text-warning" href="/new-post"><i
+                                class="fa fa-plus"></i>
+                             post</a></button>
                     </br>
                     </section>
             </div>
         </nav>
         {{/if}}
-       
-        
-    
 
 
-        <main>
+       <main>
             {{{ body }}}
         </main>
 
@@ -62,7 +60,7 @@
                     <p class="card-title">
                         Made with ❤️ by
                         <a href="https://github.com/jconeff">Jessica Coneff</a> ,
-                        <a href="https://github.com/Dmorrel7">Dalton Morel</a>,
+                        <a href="https://github.com/Dmorrel7">Dalton Morrel</a>,
                         <a href="https://github.com/valiantcreative33">Ruben Matamoros</a>, and
                         <a href="https://github.com/gabrielazalta">Gabriela Zalta</a>.
                     </p>
@@ -72,7 +70,6 @@
 
     </div>
     <script src="/javascript/logout.js"></script>
-    <script src="/javascript/add-post.js"></script>
 </body>
 
 </html>

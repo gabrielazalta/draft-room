@@ -8,59 +8,87 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-    res.render('dashboard' , {loggedIn:req.session.loggedIn})
-});
 
-// get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
-    console.log(req.session);
-    console.log('======================');
-    Post.findAll({
-            where: {
-                user_id: req.session.user_id
-            },
-            attributes: [
-                'id',
-                'post_url',
-                'title',
-                'created_at',
-                [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-            ],
-            include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                },
-                {
+
+    const userPromise = User.findOne({
+        where: {
+            id: req.session.user_id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content', 'user_id']
+        }]
+    });
+    const postPromise = Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        attributes: [
+            'id',
+            'content',
+            'title',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        ],
+        include: [{
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'bio']
                 }
-            ]
-        })
-        .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({
+            },
+            {
+                model: User,
+                attributes: ['username', 'bio']
+            }
+        ]
+    });
+
+    Promise.all([userPromise, postPromise])
+        .then(data => {
+            const posts = data[1].map(post => post.get({
                 plain: true
             }));
             res.render('dashboard', {
+                loggedIn: req.session.loggedIn,
+                user: data[0].dataValues,
                 posts,
-                loggedIn: true
+                loggedIn: true,
             });
         })
         .catch(err => {
-            console.log(err);
+            console.error(err);
             res.status(500).json(err);
         });
+
 });
+
+router.get('/', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.session.user_id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content', 'user_id']
+        }]
+    }).then(dbUserData => {
+        res.render('dashboard', {
+            loggedIn: req.session.loggedIn,
+            user: dbUserData.dataValues
+        })
+    })
+});
+
+
 
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findByPk(req.params.id, {
             attributes: [
                 'id',
-                'post_url',
+                'content',
                 'title',
                 'created_at',
                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']

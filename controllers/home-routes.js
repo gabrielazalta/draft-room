@@ -9,7 +9,7 @@ const {
 
 
 router.get('/', (req, res) => {
-    console.log(req.session)
+    // console.log(req.session)
     res.render('landing-page')
 });
 
@@ -21,21 +21,21 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 
-router.get('/homepage', (req, res) => {
-    res.render('homepage', {loggedIn:req.session.loggedIn})
-});
+// router.get('/homepage', (req, res) => {
+//     res.render('homepage', {loggedIn:req.session.loggedIn})
+// });
 
 router.get('/new-post', (req, res) => {
     res.render('new-post' ,{loggedIn:req.session.loggedIn})
 });
 
 // get all posts for homepage
-router.get('/', (req, res) => {
+router.get('/homepage', (req, res) => {
     console.log('======================');
     Post.findAll({
             attributes: [
                 'id',
-                'post_url',
+                'content',
                 'title',
                 'created_at',
                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -86,7 +86,7 @@ router.get('/post/:id', (req, res) => {
             },
             attributes: [
                 'id',
-                'post_url',
+                'content',
                 'title',
                 'created_at',
                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -118,10 +118,10 @@ router.get('/post/:id', (req, res) => {
                 plain: true
             });
 
-            // res.render('single-post', {
-            //     post,
-            //     loggedIn: req.session.loggedIn
-            // });
+            res.render('single-post', {
+                post,
+                loggedIn: req.session.loggedIn
+            });
 
         })
         .catch(err => {
