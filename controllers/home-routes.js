@@ -117,12 +117,17 @@ router.get('/post/:id', (req, res) => {
                 plain: true
             });
 
+            res.render('single-post', {
+                post,
+                loggedIn: req.session.loggedIn
+            });
         })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
         });
 });
+
 
 //find one user
 router.get('/user-page/:id', (req, res) => {

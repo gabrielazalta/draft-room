@@ -65,6 +65,25 @@ router.get('/', withAuth, (req, res) => {
 
 });
 
+router.get('/', (req, res) => {
+    User.findOne({
+        where: {
+            id: req.session.user_id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content', 'user_id']
+        }]
+    }).then(dbUserData => {
+        res.render('dashboard', {
+            loggedIn: req.session.loggedIn,
+            user: dbUserData.dataValues
+        })
+    })
+});
+
+
+
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findByPk(req.params.id, {
             attributes: [
