@@ -21,16 +21,12 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 
-router.get('/homepage', (req, res) => {
-    res.render('homepage', {loggedIn:req.session.loggedIn})
-});
-
 router.get('/new-post', (req, res) => {
     res.render('new-post' ,{loggedIn:req.session.loggedIn})
 });
 
 // get all posts for homepage
-router.get('/', (req, res) => {
+router.get('/homepage', (req, res) => {
     console.log('======================');
     Post.findAll({
             attributes: [
