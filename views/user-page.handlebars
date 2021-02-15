@@ -2,12 +2,12 @@
     <div class="row">
         {{!-- user info --}}
         <div class="border border-warning card post m-2 p-2 col-12" style="width: 18rem;">
-            <h3 class="p-2 my-4 bg-light">welcome to <a class="text-secondary text-decoration-none">{{user.dataValues.username}}'s
-                </a>page!<i class=" text-warning fa fa-hand-peace-o"></i></h3>
+            <h3 class="p-2 my-4 bg-light">welcome to <a class="text-secondary text-decoration-none">{{user.username}}'s
+                </a>page! <i class=" text-warning fa fa-hand-peace-o"></i></h3>
             <form class="bio-form mb-3">
-                {{#if user.dataValues.bio}}
+                {{#if user.bio}}
                 <h4>Bio:</h4>
-                <p name="user-bio" class="m-1 p-1">{{user.dataValues.bio}}</p>
+                <p name="user-bio" class="m-1 p-1">{{user.bio}}</p>
                 </br>
                 {{/if}}
             </form>
@@ -15,9 +15,9 @@
 
         {{!-- user posts --}}
         <div class="card post m-2 p-2 col-12 border-warning" style="width: 18rem;">
-            <h3 class="p-2 my-4 bg-light">posts by {{user.dataValues.username}}:</h3>
+            <h3 class="p-2 my-4 bg-light">posts by <a class="text-secondary">{{user.username}}:</a></h3>
             <section class="m-2 p-2">
-                {{#each user.dataValues.posts as |post|}}
+                {{#each user.posts as |post|}}
                 <div class="p-2 card-body title border-top border-bottom border-6 rounded">
                     <h4 class="card-title">{{post.title}}</h4>
                     <p class="card-text text-muted">{{post.content}}</p>

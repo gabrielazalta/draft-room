@@ -130,19 +130,18 @@ router.get('/user-page/:id', (req, res) => {
             where: {
                 id: req.params.id
             },
-            include: [{
+            include: {
                 model: Post,
-                attributes: ['id', 'title', 'content']
+                attributes: ['title', 'content']
             },
-        ]
         })
         .then(dbUserData => {
             console.log('USER:', dbUserData);
             console.log('POST:', dbUserData.dataValues.posts);
             res.render('user-page', {
                 loggedIn: req.session.loggedIn,
-                user: dbUserData,
-                posts: dbUserData.posts
+                user: dbUserData.dataValues,
+                posts: dbUserData.dataValues
             });
 
             if (!dbUserData) {

@@ -15,7 +15,7 @@
                 <p name="user-bio" class="m-1 p-1">{{user.bio}}</p>
                 </br>
                 <button id="editBio" type="button" class="btn btn-light m-2 p-2"><a
-                        class="link text-decoration-none text-warning" href="">edit</a></button>
+                        class="link text-decoration-none text-warning" href="/users/bio/{{user.id}}">edit</a></button>
                 {{/if}}
             </form>
         </div>
@@ -75,3 +75,4 @@
 
 <script src="/javascript/dashboard.js"></script>
 <script src="/javascript/add-post.js"></script>
+<script src="/javascript/edit-bio.js"></script>
