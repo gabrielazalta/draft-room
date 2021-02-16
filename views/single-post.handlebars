@@ -11,8 +11,10 @@
         <div>
           <textarea name="comment-body contentFont"></textarea>
         </div>
+
         <div>
           <button type="submit" class="btn btn-warning textFont">add comment</button>
+          <button type="button" class="upvote-btn">upvote</button>
         </div>
       </form>
       {{/if}}
@@ -26,4 +28,6 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/upvote.js"></script>
+
 {{/if}}

@@ -2,10 +2,11 @@
     <form class="comment-form post m-1 p-1">
         <div class="form-group title">
             <h4 target="_blank" class="text-body font-weight-bold titleFont">{{title}}</h4>
-            <p class="contentFont text-muted">Posted by <a class="text-warning contentFont" href="/user-page/{{id}}" class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
+            <p class="contentFont text-muted">{{vote_count}} {{format_plural "point" vote_count}}Posted by <a class="text-warning contentFont" href="/user-page/{{id}}" class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
             </br>
             <p class="card-text contentFont text-dark">{{content}}</p>
             </br>
+              <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
         </div>
     </form>
 </article>
