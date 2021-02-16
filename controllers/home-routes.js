@@ -21,13 +21,12 @@ router.get('/login', (req, res) => {
     res.render('login')
 });
 
-// router.get('/homepage', (req, res) => {
-//     res.render('homepage', {loggedIn:req.session.loggedIn})
-// });
-
 router.get('/new-post', (req, res) => {
-    res.render('new-post' ,{loggedIn:req.session.loggedIn})
+    res.render('new-post', {
+        loggedIn: req.session.loggedIn
+    })
 });
+
 
 // get all posts for homepage
 router.get('/homepage', (req, res) => {
@@ -122,7 +121,40 @@ router.get('/post/:id', (req, res) => {
                 post,
                 loggedIn: req.session.loggedIn
             });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
+
+//find one user
+router.get('/user-page/:id', (req, res) => {
+    User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: {
+                model: Post,
+                attributes: ['title', 'content']
+            },
+        })
+        .then(dbUserData => {
+            console.log('USER:', dbUserData);
+            console.log('POST:', dbUserData.dataValues.posts);
+            res.render('user-page', {
+                loggedIn: req.session.loggedIn,
+                user: dbUserData.dataValues,
+                posts: dbUserData.dataValues
+            });
+
+            if (!dbUserData) {
+                res.status(404).json({
+                    message: 'No user found with this id'
+                });
+                return;
+            }
         })
         .catch(err => {
             console.log(err);

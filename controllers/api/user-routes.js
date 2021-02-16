@@ -140,9 +140,6 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-
-  // pass in req.body instead to only update what's passed through
   User.update(req.body, {
       individualHooks: true,
       where: {
@@ -185,7 +182,7 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-//create/edit a bio
+//create a bio
 router.post('/bio', (req, res) => {
   console.log(req.body);
   console.log(req.session);
@@ -206,5 +203,30 @@ router.post('/bio', (req, res) => {
     });
 });
 
+//edit bio
+router.put('/bio/:id', (req, res) => {
+  User.update(req.body, {
+      individualHooks: true,
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(dbUserData => {
+      res.render('edit-bio', {
+        loggedIn: true
+    });
+      if (!dbUserData) {
+        res.status(404).json({
+          message: 'No user found with this id'
+        });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

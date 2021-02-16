@@ -1,11 +1,32 @@
-<ol class="post-list">
-    {{#if posts}}
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class=" p-3 m-5 border border-5 rounded border-warning col-12">
+            {{#if posts}}
+            <section class="m-2 p-2">
+                {{#each posts as |post|}}
+                <article class="post border-bottom m-1 p-1">
+                    <div class="title">
+                        <h3 class="text-dark"><a href="/post/{{id}}"
+                                class="edit-link text-dark titleFont">{{post.title}}</a></h3>
+                        {{!-- <p class="text-body contentFont">{{post.content}}</p> --}}
+                    </div>
+                    </br>
+                    <div class="meta text-secondary contentFont">
+                        {{post.vote_count}} favorite(s)
+                        |
+                        <a class="text-warning" href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+                    </div>
+                    <p class="text-secondary contentFont">Posted by <a class="text-warning" href="/user-page/{{id}}"
+                                class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
+                </article>
+                </br>
 
-    {{#each posts as |post| }}
-        {{> post-info post}}
-    {{/each}}
-    
-    {{else}} 
-    <h3 class="m-2 p-2">No posts yet!</h3>
-    {{/if}}
-</ol>
+                {{else}}
+                <h5 class="p-3 textFont">Nothing to see here yet!</h5>
+            </section>
+        </div>
+        {{/each}}
+        {{/if}}
+
+    </div>
+</div>

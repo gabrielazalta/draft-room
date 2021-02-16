@@ -1,21 +1,29 @@
-{{> post-info post}}
+<div class="container">
+      <a class="text-warning textFont" href="/homepage"> &larr; back to homepage</a>
+      </br>
+      </br>
+  <div class="row justify-content-md-center">
+    <div class="border border-5 rounded col-10">
+      {{> post-info post}}
 
-{{#if loggedIn}}
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
+      {{#if loggedIn}}
+      <form class="comment-form m-1 p-1" id="comment-form">
+        <div>
+          <textarea name="comment-body contentFont"></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-warning textFont">add comment</button>
+        </div>
+      </form>
+      {{/if}}
+
+      {{> comments post.comments}}
+
+    </div>
   </div>
+</div>
 
-  <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
-  </div>
-</form>
-{{/if}}
-
-{{> comments post.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
 {{/if}}

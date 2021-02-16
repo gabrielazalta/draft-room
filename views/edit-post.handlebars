@@ -1,29 +1,29 @@
-<a class="text-warning" href="/dashboard"> &larr; Back to dashboard</a>
-</br>
 <div class="container">
+<a class="text-warning textFont" href="/dashboard"> &larr; Back to Dashboard</a>
+</br>
   <div class="row justify-content-md-center">
     <div class=" p-3 m-5 border border-5 border-warning rounded col-8">
-      <h3 class="text-center">Edit Post</h3>
+      <h3 class="text-center titleFont">Edit Post</h3>
       </br>
       <form class="edit-post-form">
         <div class="form-group">
-          <label for="post-title" class="form-label">title</label>
-          <input name="post-title" type="text" class="form-control" value="{{post.title}}">
+          <label for="post-title" class="form-label textFont">Title</label>
+          <input name="post-title" type="text" class="form-control contentFont" value="{{post.title}}">
         </div>
         </br>
         <div class="form-group">
-          <label class="form-label" for="post">content</label>
-          <input name="content" type="text" class="form-control" value="{{post.content}}">
+          <label class="form-label textFont" for="post">Content</label>
+          <input name="content" type="text" class="form-control contentFont" value="{{post.content}}">
         </div>
         </br>
         <div>
-          <a class="text-warning" href="/post/{{post.id}}">{{post.comments.length}}
+          <a class="text-warning contentFont" href="/post/{{post.id}}">{{post.comments.length}}
             {{format_plural "comment" post.comments.length}}</a>
         </div>
         </br>
         <div>
-          <button type="submit" class="btn btn-outline-warning">save post</button>
-          <button type="button" class="btn btn-outline-warning delete-post-btn">delete post</button>
+          <button type="submit" class="btn btn-outline-warning textFont">Save Post</button>
+          <button type="button" class="btn btn-outline-warning delete-post-btn textFont">Delete Post</button>
         </div>
       </form>
       </br>
