@@ -26,7 +26,7 @@
 </style>
 <g>
 	
-		<radialGradient id="SVGID_1_" cx="112.05" cy="788.1" r="76.9559" gradientTransform="matrix(1 0 0 1 0 -678)" gradientUnits="userSpaceOnUse">
+		<radialGradient id="SVGID_1_" cx="112.05" cy="-566.1" r="76.9559" gradientTransform="matrix(1 0 0 -1 0 -456)" gradientUnits="userSpaceOnUse">
 		<stop  offset="0" style="stop-color:#FFC108"/>
 		<stop  offset="0.51" style="stop-color:#FDBF08"/>
 		<stop  offset="0.7" style="stop-color:#F6B907"/>
