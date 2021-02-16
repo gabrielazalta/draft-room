@@ -1,5 +1,5 @@
 <div class="container">
-      <a class="text-warning" href="/homepage"> &larr; back to homepage</a>
+      <a class="text-warning textFont" href="/homepage"> &larr; back to homepage</a>
       </br>
       </br>
   <div class="row justify-content-md-center">
@@ -7,15 +7,14 @@
       {{> post-info post}}
 
       {{#if loggedIn}}
-      <form class="comment-form m-2 p-2" id="comment-form">
+      <form class="comment-form m-1 p-1" id="comment-form">
         <div>
-          <textarea name="comment-body"></textarea>
+          <textarea name="comment-body contentFont"></textarea>
         </div>
         <div>
-          <button type="submit" class="btn btn-warning">add comment</button>
+          <button type="submit" class="btn btn-warning textFont">add comment</button>
         </div>
       </form>
-      </br>
       {{/if}}
 
       {{> comments post.comments}}

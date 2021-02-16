@@ -1,9 +1,9 @@
-<div class="comments">
+<div class="comments m-1 p-1">
   {{#each this}}
   <section class="comment border-top border-bottom border-6">
-    <div>
-      <p class="text">{{comment_text}}</p>
-      <p class="mb-2 text-muted text-warning"><a class="text-warning" href="/user-page/{{id}}" class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
+    <div class="p-1">
+      <a class="text contentFont text-dark">{{comment_text}}</a>
+      <p class="mb-2 text-muted text-warning contentFont"><a class="text-warning" href="/user-page/{{id}}" class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
     </div>
   </section>
   {{/each}}
