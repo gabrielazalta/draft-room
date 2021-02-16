@@ -5,6 +5,9 @@
       <a class="text contentFont text-dark">{{comment_text}}</a>
       <p class="mb-2 text-muted text-warning contentFont"><a class="text-warning" href="/user-page/{{id}}" class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
     </div>
+     <div class="text">
+      {{comment_text}}
+    </div>
   </section>
   {{/each}}
 </div>
