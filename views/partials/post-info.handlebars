@@ -4,7 +4,7 @@
             <h4 target="_blank" class="text-body font-weight-bold titleFont">{{title}}</h4>
             <p class="contentFont text-muted">{{vote_count}} {{format_plural "point" vote_count}}Posted by <a class="text-warning contentFont" href="/user-page/{{id}}" class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
             </br>
-            <h5 class="card-text contentFont">{{content}}</h5>
+            <p class="card-text contentFont text-dark">{{content}}</p>
             </br>
               <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
         </div>
