@@ -22,8 +22,10 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/new-post', (req, res) => {
+    console.log(req.session.user_id)
     res.render('new-post', {
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id
     })
 });
 
@@ -60,7 +62,8 @@ router.get('/homepage', (req, res) => {
 
             res.render('homepage', {
                 posts,
-                loggedIn: req.session.loggedIn
+                loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id
             });
         })
         .catch(err => {
@@ -119,7 +122,8 @@ router.get('/post/:id', (req, res) => {
 
             res.render('single-post', {
                 post,
-                loggedIn: req.session.loggedIn
+                loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id
             });
         })
         .catch(err => {
@@ -145,6 +149,7 @@ router.get('/user-page/:id', (req, res) => {
             console.log('POST:', dbUserData.dataValues.posts);
             res.render('user-page', {
                 loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id,
                 user: dbUserData.dataValues,
                 posts: dbUserData.dataValues
             });

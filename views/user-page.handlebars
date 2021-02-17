@@ -1,29 +1,39 @@
 <div class="container">
     <div class="row">
         {{!-- user info --}}
-        <div class="border border-warning card post m-2 p-2 col-12" style="width: 18rem;">
-            <h3 class="p-2 my-4 bg-light titleFont">welcome to <a class="text-secondary text-decoration-none">{{user.username}}'s
+        <div class="border text-dark card post m-2 p-2 col-12" style="width: 18rem;">
+            <h3 class="p-2 my-4 titleFont">welcome to <a class="text-secondary text-decoration-none">{{user.username}}'s
                 </a>page! <i class=" text-warning fa fa-hand-peace-o"></i></h3>
+                </br>
             <form class="bio-form mb-3">
-                <h5 class="textFont">Email:</h5>
-                <p name="user-bio" class="m-1 p-1 contentFont">{{user.email}}</p>
-                </br>
-                <h5 class="textFont">Bio:</h5>
-                <p name="user-bio" class="m-1 p-1 contentFont">{{user.bio}}</p>
-                </br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="textFont">Email: <p name="user-bio" class="m-1 p-1 contentFont text-secondary">
+                                    {{user.email}}</p>
+                            </h5>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="textFont">Bio: <p name="user-bio" class="m-1 p-1 contentFont text-secondary">
+                                    {{user.bio}}</p>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
 
         {{!-- user posts --}}
-        <div class="card post m-2 p-2 col-12 border-warning" style="width: 18rem;">
-            <h3 class="p-2 my-4 bg-light textFont">posts by <a class="text-secondary">{{user.username}}:</a></h3>
+        <div class="card post m-2 p-2 col-12 text-dark" style="width: 18rem;">
+            <h3 class="p-2 my-4 textFont">posts by <a class="text-secondary">{{user.username}}:</a></h3>
             <section class="m-2 p-2">
                 {{#each user.posts as |post|}}
                 <div class="p-2 card-body title border-top border-bottom border-6 rounded">
                     <h4 class="card-title titleFont">{{post.title}}</h4>
                     <p class="card-text text-muted contentFont">{{post.content}}</p>
                     </h5>
-                    <a class="card-link contentFont"><a href="/post/{{id}}" class="text-warning contentFont">{{comments.length}}
+                    <a class="card-link contentFont"><a href="/post/{{id}}"
+                            class="text-warning contentFont">{{comments.length}}
                             {{format_plural "comment" comments.length}}</a></a>
                 </div>
                 </br>
@@ -35,3 +45,4 @@
 
     </div>
 </div>
+
