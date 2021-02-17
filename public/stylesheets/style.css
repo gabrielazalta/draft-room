@@ -28,6 +28,7 @@ section {
     justify-content: center;
 }
 
+
 /* CARD STYLE */
 
 .card {
@@ -220,9 +221,9 @@ footer {
   
   /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
   
-  @media screen and (max-width: 575px) {
+ @media screen and (max-width: 575px) {
     .section-title {
         width: 95%;
     }
   }
-}
+} 
