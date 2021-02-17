@@ -45,9 +45,9 @@ section {
 
   /* HEADER & NAVBAR STYLE */
 
-.nav-color {
+/* .nav-color {
   background-color: rgba(255, 255, 255, 0.842);
-}
+} */
 
 .background-white {
   background-color: rgba(255, 255, 255, 0.918);
@@ -68,11 +68,6 @@ header {
     background-attachment: fixed;
     background-position: 80%;
     z-index: 9999;
-  }
-
-  container {
-    justify-content: center;
-    position: relative;
   }
 
   .navbar-brand {
@@ -153,6 +148,35 @@ footer {
     line-height: 1.5;
     text-align: right;
   }
+
+
+  @media screen and (max-width: 1440px) {
+    header {
+        padding-bottom: 0;
+        justify-content: center;
+        position: relative;
+    }
+  
+    h1 {
+        text-align: center;
+    }
+  
+    .section-title {
+        width: 80%;
+    }
+
+    footer h2, footer div {
+        text-align: center;
+        width: 100%;
+    }
+
+    main {
+      width: 100%;
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+  }
+
 
   /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 

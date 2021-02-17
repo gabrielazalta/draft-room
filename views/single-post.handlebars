@@ -3,14 +3,16 @@
 </br>
 <div class="container">
   <div class="row">
-    <div class="center border border-5 rounded background-white col">
+    <div class="center border border-5 rounded background-white col-12">
       {{> post-info post}}
 
       {{#if loggedIn}}
       <form class="comment-form m-1 p-1" id="comment-form">
         <div>
-          <textarea name="comment-body contentFont"></textarea>
+          <textarea name="comment-body contentFont" id="textAreaTest"></textarea>
         </div>
+
+        
 
         <div>
           <button type="submit" class="btn btn-warning textFont">add comment</button>
@@ -26,9 +28,8 @@
 </div>
 
 
-{{#if loggedIn}}
+
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script>
 
 
-{{/if}}
