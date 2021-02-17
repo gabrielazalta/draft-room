@@ -1,10 +1,13 @@
+<a class="text-warning textFont" href="/homepage"> &larr; back to homepage</a>
+</br>
+</br>
 <div class="container">
     <div class="row">
         {{!-- user info --}}
         <div class="border text-dark card post m-2 p-2 col-12" style="width: 18rem;">
             <h3 class="p-2 my-4 titleFont">welcome to <a class="text-secondary text-decoration-none">{{user.username}}'s
                 </a>page! <i class=" text-warning fa fa-hand-peace-o"></i></h3>
-                </br>
+            </br>
             <form class="bio-form mb-3">
                 <div class="container">
                     <div class="row">
@@ -14,9 +17,15 @@
                             </h5>
                         </div>
                         <div class="col-6">
+                            {{#if user.bio}}
                             <h5 class="textFont">Bio: <p name="user-bio" class="m-1 p-1 contentFont text-secondary">
                                     {{user.bio}}</p>
                             </h5>
+                            {{else}}
+                            <h5 class="textFont">Bio: <p name="user-bio" class="m-1 p-1 contentFont text-secondary">
+                                    this user has no bio yet!</p>
+                            </h5>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
@@ -45,4 +54,3 @@
 
     </div>
 </div>
-
