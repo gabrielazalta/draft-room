@@ -41,7 +41,7 @@ router.get('/', withAuth, (req, res) => {
             },
             {
                 model: User,
-                attributes: ['username', 'bio']
+                attributes: ['username', 'bio', 'id']
             }
         ]
     });

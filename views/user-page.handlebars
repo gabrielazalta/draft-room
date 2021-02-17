@@ -1,10 +1,13 @@
+<a class="text-warning textFont" href="/homepage"> &larr; back to homepage</a>
+</br>
+</br>
 <div class="container">
     <div class="row">
         {{!-- user info --}}
         <div class="border text-dark card post m-2 p-2 col-12" style="width: 18rem;">
             <h3 class="p-2 my-4 titleFont">welcome to <a class="text-secondary text-decoration-none">{{user.username}}'s
                 </a>page! <i class=" text-warning fa fa-hand-peace-o"></i></h3>
-                </br>
+            </br>
             <form class="bio-form mb-3">
                 <div class="container">
                     <div class="row">
@@ -14,9 +17,15 @@
                             </h5>
                         </div>
                         <div class="col-6">
+                            {{#if user.bio}}
                             <h5 class="textFont">Bio: <p name="user-bio" class="m-1 p-1 contentFont text-secondary">
                                     {{user.bio}}</p>
                             </h5>
+                            {{else}}
+                            <h5 class="textFont">Bio: <p name="user-bio" class="m-1 p-1 contentFont text-secondary">
+                                    this user has no bio yet!</p>
+                            </h5>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
@@ -27,12 +36,12 @@
         <div class="card post m-2 p-2 col-12 text-dark" style="width: 18rem;">
             <h3 class="p-2 my-4 textFont">posts by <a class="text-secondary">{{user.username}}:</a></h3>
             <section class="m-2 p-2">
-                {{#each user.posts as |post|}}
+                {{#each posts as |post|}}
                 <div class="p-2 card-body title border-top border-bottom border-6 rounded">
                     <h4 class="card-title titleFont">{{post.title}}</h4>
                     <p class="card-text text-muted contentFont">{{post.content}}</p>
                     </h5>
-                    <a class="card-link contentFont"><a href="/post/{{id}}"
+                    <a class="card-link contentFont"><a href="/post/{{post.id}}"
                             class="text-warning contentFont">{{comments.length}}
                             {{format_plural "comment" comments.length}}</a></a>
                 </div>
@@ -45,4 +54,3 @@
 
     </div>
 </div>
-
