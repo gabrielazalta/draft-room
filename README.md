@@ -47,4 +47,4 @@ This application is under the [ISC](https://opensource.org/licenses/ISC) license
 ![Screenshot of the Draft Room website](./public/images/mockup.png)
 
 ## Contribution
-Made with ❤️ by [Jessica Coneff](https://github.com/jconeff), [Dalton Morel](https://github.com/Dmorrel7), [Ruben Matamoros](https://github.com/valiantcreative33), and [Gabriela Zalta](https://github.com/gabrielazalta).
+Made with ❤️ (and a few 🍺's) by [Jessica Coneff](https://github.com/jconeff), [Dalton Morel](https://github.com/Dmorrel7), [Ruben Matamoros](https://github.com/valiantcreative33), and [Gabriela Zalta](https://github.com/gabrielazalta).
