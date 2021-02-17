@@ -70,6 +70,11 @@ header {
     z-index: 9999;
   }
 
+  container {
+    justify-content: center;
+    position: relative;
+  }
+
   .navbar-brand {
       cursor: pointer;
       max-height: 60px;
