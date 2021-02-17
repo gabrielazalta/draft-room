@@ -9,8 +9,10 @@
       {{#if loggedIn}}
       <form class="comment-form m-1 p-1" id="comment-form">
         <div>
-          <textarea name="comment-body contentFont"></textarea>
+          <textarea name="comment-body contentFont" id="textAreaTest"></textarea>
         </div>
+
+        
 
         <div>
           <button type="submit" class="btn btn-warning textFont">add comment</button>
@@ -26,9 +28,8 @@
 </div>
 
 
-{{#if loggedIn}}
+
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script>
 
 
-{{/if}}
