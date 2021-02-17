@@ -8,7 +8,7 @@ This is a CMS-style blog site created so that beer lovers can have a space to pu
 * [Installation](#Installation)
 * [Built With](#Built-With)
 * [License](#License)
-* [Screenshot](#Screenshot)
+* [Website Screenshot](#Website-Screenshot)
 * [Contribution](#Contribution)
 
 ## Installation
@@ -44,7 +44,7 @@ Once done so and have cloned or forked from my repo, be sure to source your sche
 This application is under the [ISC](https://opensource.org/licenses/ISC) license.
 
 ## Website Screenshot
-![Screenshot of the Draft Room website](./assets/mockup.png)
+![Screenshot of the Draft Room website](./public/images/mockup.png)
 
 ## Contribution
 Made with ❤️ by [Jessica Coneff](https://github.com/jconeff), [Dalton Morel](https://github.com/Dmorrel7), [Ruben Matamoros](https://github.com/valiantcreative33), and [Gabriela Zalta](https://github.com/gabrielazalta).
