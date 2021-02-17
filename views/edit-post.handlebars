@@ -2,17 +2,17 @@
 <a class="text-warning textFont" href="/dashboard"> &larr; Back to Dashboard</a>
 </br>
   <div class="row justify-content-md-center">
-    <div class=" p-3 m-5 border border-5 border-warning rounded col-8">
-      <h3 class="text-center titleFont">Edit Post</h3>
+    <div class="col p-3 m-5 border border-5 rounded background-white">
+      <h3 class="text-center titleFont text-dark">Edit Post</h3>
       </br>
       <form class="edit-post-form">
         <div class="form-group">
-          <label for="post-title" class="form-label textFont">Title</label>
+          <label for="post-title" class="form-label textFont text-dark ">Title</label>
           <input name="post-title" type="text" class="form-control contentFont" value="{{post.title}}">
         </div>
         </br>
         <div class="form-group">
-          <label class="form-label textFont" for="post">Content</label>
+          <label class="form-label textFont text-dark" for="post">Content</label>
           <input name="content" type="text" class="form-control contentFont" value="{{post.content}}">
         </div>
         </br>
@@ -31,7 +31,9 @@
       {{> comments post.comments}}
     </div>
   </div>
+
 </div>
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
+<script src="/javascript/comment.js"></script>

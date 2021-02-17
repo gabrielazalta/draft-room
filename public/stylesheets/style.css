@@ -28,13 +28,14 @@ section {
     justify-content: center;
 }
 
+
 /* CARD STYLE */
 
 .card {
     margin-top: 100px;
     padding: 60px;
-    background-color: unset;
-    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.904);
+    /* border-color: var(--primary-color); */
 }
 
 .card-body {
@@ -43,6 +44,15 @@ section {
 }
 
   /* HEADER & NAVBAR STYLE */
+
+/* .nav-color {
+  background-color: rgba(255, 255, 255, 0.842);
+} */
+
+.background-white {
+  background-color: rgba(255, 255, 255, 0.877);
+}
+
 
 header {
     padding: 20px 0px;
@@ -116,6 +126,7 @@ header {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 
+
   /* FOOTER STYLE */
 
 footer {
@@ -139,6 +150,36 @@ footer {
     text-align: right;
   }
 
+
+  @media screen and (max-width: 3000px) {
+    header {
+        padding-bottom: 0;
+        justify-content: center;
+        position: relative;
+    }
+  
+    h1 {
+        text-align: center;
+    }
+  
+    .section-title {
+        width: 80%;
+    }
+
+    footer h2, footer div {
+        text-align: center;
+        width: 100%;
+    }
+
+    main {
+      width: 100%;
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+
+  }
+
+
   /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 
 @media screen and (max-width: 980px) {
@@ -161,7 +202,7 @@ footer {
         width: 100%;
     }
   }
-  
+
   /* MEDIA QUERY FOR TABLETS AND SMALLER */
   
   @media screen and (max-width: 768px) {
@@ -181,9 +222,9 @@ footer {
   
   /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
   
-  @media screen and (max-width: 575px) {
+ @media screen and (max-width: 575px) {
     .section-title {
         width: 95%;
     }
   }
-}
+} 

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container center-page">
     <div class="row justify-content-md-center">
-        <div class=" p-3 m-5 border border-5 rounded border-warning col-12">
+        <div class=" p-3 m-5 border border-5 rounded background-white col-12">
             {{#if posts}}
             <section class="m-2 p-2">
                 {{#each posts as |post|}}
@@ -16,7 +16,7 @@
                         |
                         <a class="text-warning" href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
                     </div>
-                    <p class="text-secondary contentFont">Posted by <a class="text-warning" href="/user-page/{{id}}"
+                    <p class="text-secondary contentFont">Posted by <a class="text-warning" href="/user-page/{{user.id}}"
                                 class="edit-link text-dark">{{user.username}}</a> on {{format_date created_at}}</p>
                 </article>
                 </br>

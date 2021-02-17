@@ -1,5 +1,4 @@
 # Draft Room
-
 [![License: MIT](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC) [![Issues](https://img.shields.io/github/issues/gabrielazalta/draft-room)](https://github.com/gabrielazalta/draft-room/issues) [![Issues](https://img.shields.io/github/contributors/gabrielazalta/draft-room)](https://github.com/gabrielazalta/draft-room/graphs/contributors)
 
 ## Purpose

@@ -22,8 +22,10 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/new-post', (req, res) => {
+    console.log(req.session.user_id)
     res.render('new-post', {
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        user_id: req.session.user_id
     })
 });
 
@@ -35,6 +37,7 @@ router.get('/homepage', (req, res) => {
             attributes: [
                 'id',
                 'content',
+                'user_id',
                 'title',
                 'created_at',
                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -49,7 +52,7 @@ router.get('/homepage', (req, res) => {
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'id']
                 }
             ]
         })
@@ -60,7 +63,8 @@ router.get('/homepage', (req, res) => {
 
             res.render('homepage', {
                 posts,
-                loggedIn: req.session.loggedIn
+                loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id
             });
         })
         .catch(err => {
@@ -88,6 +92,7 @@ router.get('/post/:id', (req, res) => {
                 'content',
                 'title',
                 'created_at',
+                'user_id',
                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
             ],
             include: [{
@@ -100,7 +105,7 @@ router.get('/post/:id', (req, res) => {
                 },
                 {
                     model: User,
-                    attributes: ['username']
+                    attributes: ['username', 'id']
                 }
             ]
         })
@@ -119,7 +124,8 @@ router.get('/post/:id', (req, res) => {
 
             res.render('single-post', {
                 post,
-                loggedIn: req.session.loggedIn
+                loggedIn: req.session.loggedIn,
+                user_id: req.session.user_id
             });
         })
         .catch(err => {
@@ -131,33 +137,55 @@ router.get('/post/:id', (req, res) => {
 
 //find one user
 router.get('/user-page/:id', (req, res) => {
-    User.findOne({
-            where: {
-                id: req.params.id
+    const userPromise = User.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [{
+            model: Post,
+            attributes: ['id', 'title', 'content', 'user_id']
+        }]
+    });
+    const postPromise = Post.findAll({
+        where: {
+            user_id: req.params.id
+        },
+        attributes: [
+            'id',
+            'content',
+            'title',
+            'created_at',
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        ],
+        include: [{
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username', 'bio']
+                }
             },
-            include: {
-                model: Post,
-                attributes: ['title', 'content']
-            },
-        })
-        .then(dbUserData => {
-            console.log('USER:', dbUserData);
-            console.log('POST:', dbUserData.dataValues.posts);
+            {
+                model: User,
+                attributes: ['username', 'bio', 'id']
+            }
+        ]
+    });
+
+    Promise.all([userPromise, postPromise])
+        .then(data => {
+            const posts = data[1].map(post => post.get({
+                plain: true
+            }));
             res.render('user-page', {
                 loggedIn: req.session.loggedIn,
-                user: dbUserData.dataValues,
-                posts: dbUserData.dataValues
+                user: data[0].dataValues,
+                posts,
+                loggedIn: true,
             });
-
-            if (!dbUserData) {
-                res.status(404).json({
-                    message: 'No user found with this id'
-                });
-                return;
-            }
         })
         .catch(err => {
-            console.log(err);
+            console.error(err);
             res.status(500).json(err);
         });
 });
