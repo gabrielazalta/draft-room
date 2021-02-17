@@ -61,7 +61,7 @@ header {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background-image: url("../../views/views-images/lp-beer.jpg");
+    background-image: url("../images/lp-beer.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
