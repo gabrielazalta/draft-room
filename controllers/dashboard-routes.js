@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {
+    QueryTypes
+} = require('sequelize');
+
+const {
     Post,
     User,
     Comment,
@@ -52,9 +56,15 @@ router.get('/', withAuth, (req, res) => {
         attributes: [
             'id',
             'content',
+            'user_id',
             'title',
             'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal('(SELECT * FROM post INNER JOIN vote on vote.post_id = post.id where vote.user_id = :id )', {
+                replacements: {
+                    id: req.session.user_id
+                },
+                type: QueryTypes.SELECT
+            }), 'vote_count'],
         ],
         include: [{
                 model: Comment,
@@ -76,23 +86,26 @@ router.get('/', withAuth, (req, res) => {
             const posts = data[1].map(post => post.get({
                 plain: true
             }));
+            const allPost = data[2].map(post => post.get({
+                plain: true
+            }));
             res.render('dashboard', {
                 loggedIn: req.session.loggedIn,
                 user: data[0].dataValues,
                 posts,
-                allPost: data[2],
+                allPost,
                 loggedIn: true,
             })
 
-        //     res.json(
-        //         {
-        //                 loggedIn: req.session.loggedIn,
-        //                 user: data[0].dataValues,
-        //                 posts,
-        //                 allPost: data[2]
-        //                 loggedIn: true,
-        //             }
-        //     )
+            // res.json(
+            //     {
+            //             loggedIn: req.session.loggedIn,
+            //             user: data[0].dataValues,
+            //             posts,
+            //             allPost,
+            //             loggedIn: true,
+            //         }
+            // )
         })
         .catch(err => {
             console.error(err);
