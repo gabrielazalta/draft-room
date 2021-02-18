@@ -76,24 +76,23 @@ router.get('/', withAuth, (req, res) => {
             const posts = data[1].map(post => post.get({
                 plain: true
             }));
-            // res.render('dashboard', {
-            //     loggedIn: req.session.loggedIn,
-            //     user: data[0].dataValues,
-            //     posts,
-            //     allPost: data[3],
-            //     loggedIn: true,
-            // });
+            res.render('dashboard', {
+                loggedIn: req.session.loggedIn,
+                user: data[0].dataValues,
+                posts,
+                allPost: data[2],
+                loggedIn: true,
+            })
 
-            res.json(
-                {
-                        loggedIn: req.session.loggedIn,
-                        user: data[0].dataValues,
-                        posts,
-                        allPost: data[2],
-                        loggedIn: true,
-                    }
-
-            )
+        //     res.json(
+        //         {
+        //                 loggedIn: req.session.loggedIn,
+        //                 user: data[0].dataValues,
+        //                 posts,
+        //                 allPost: data[2]
+        //                 loggedIn: true,
+        //             }
+        //     )
         })
         .catch(err => {
             console.error(err);
@@ -101,6 +100,7 @@ router.get('/', withAuth, (req, res) => {
         });
 
 });
+
 
 router.get('/', (req, res) => {
     User.findOne({

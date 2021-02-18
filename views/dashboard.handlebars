@@ -45,9 +45,9 @@
         {{!-- favorite posts --}}
         <div class="card post m-2 p-2 col" style="width: 18rem;">
             <h3 class="p-2 my-4 text-dark textFont">favorites:</h3>
-            {{#if allPost.vote_count}}
             <section class="m-2 p-2">
                 {{#each allPost as |post|}}
+                {{#if post.vote_count}}
                 <div class="p-2 card-body title border-top border-bottom border-6 rounded">
                     <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
                             class="edit-link text-dark titleFont">{{post.title}}</a></h4>
@@ -57,11 +57,11 @@
                             class="text-warning contentFont">{{comments.length}}
                             {{format_plural "comment" comments.length}}</a></a>
                 </div>
-                </br>
-                {{/each}}
-                {{else}}
-                <h5 class="p-3 textFont text-secondary">no posts yet, add one now!</h5>
                 {{/if}}
+                {{/each}}
+                </br>
+                {{!-- {{else}}
+                <h5 class="p-3 textFont text-secondary">no posts yet, add one now!</h5> --}}
             </section>
         </div>
 
