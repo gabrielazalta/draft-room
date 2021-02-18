@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {
+    QueryTypes
+} = require('sequelize');
+
+const {
     Post,
     User,
     Comment,
@@ -20,6 +24,7 @@ router.get('/', withAuth, (req, res) => {
             attributes: ['id', 'title', 'content', 'user_id']
         }]
     });
+
     const postPromise = Post.findAll({
         where: {
             user_id: req.session.user_id
@@ -46,17 +51,61 @@ router.get('/', withAuth, (req, res) => {
         ]
     });
 
-    Promise.all([userPromise, postPromise])
+    const allPost = Post.findAll({
+
+        attributes: [
+            'id',
+            'content',
+            'user_id',
+            'title',
+            'created_at',
+            // [sequelize.literal('(SELECT * FROM post INNER JOIN vote on vote.post_id = post.id where vote.user_id = :id )', {
+            //     replacements: {
+            //         id: { req.session.user_id }
+            //     },
+            //     type: QueryTypes.SELECT
+            // }), 'vote_count'],
+        ],
+        include: [{
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username', 'bio']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username', 'bio', 'id']
+            }
+        ]
+    });
+
+    Promise.all([userPromise, postPromise, allPost])
         .then(data => {
             const posts = data[1].map(post => post.get({
+                plain: true
+            }));
+            const allPost = data[2].map(post => post.get({
                 plain: true
             }));
             res.render('dashboard', {
                 loggedIn: req.session.loggedIn,
                 user: data[0].dataValues,
                 posts,
+                allPost,
                 loggedIn: true,
-            });
+            })
+
+            // res.json(
+            //     {
+            //             loggedIn: req.session.loggedIn,
+            //             user: data[0].dataValues,
+            //             posts,
+            //             allPost,
+            //             loggedIn: true,
+            //         }
+            // )
         })
         .catch(err => {
             console.error(err);
@@ -64,6 +113,7 @@ router.get('/', withAuth, (req, res) => {
         });
 
 });
+
 
 router.get('/', (req, res) => {
     User.findOne({

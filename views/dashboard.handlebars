@@ -45,22 +45,22 @@
         {{!-- favorite posts --}}
         <div class="card post m-2 p-2 col" style="width: 18rem;">
             <h3 class="p-2 my-4 text-dark textFont">favorites:</h3>
-            {{!-- {{#if posts.length}}
             <section class="m-2 p-2">
-                {{#each posts as |post|}}
-                <div class="p-2 card-body title">
+                {{#each allPost as |post|}}
+                <div class="p-2 card-body title border-top border-bottom border-6 rounded">
                     <h4 class="card-title"><a href="/dashboard/edit/{{post.id}}"
-                            class="edit-link text-dark">{{post.title}}</a></h4>
-                    <h5></h5>
-                    <p class="card-text text-muted">{{post.content}}</p>
+                            class="edit-link text-dark titleFont">{{post.title}}</a></h4>
+                    <p class="card-text text-muted contentFont">{{post.content}}</p>
                     </h5>
-                    <a class="card-link"><a href="/post/{{id}}" class="text-info">{{comments.length}}
+                    <a class="card-link"><a href="/post/{{post.id}}"
+                            class="text-warning contentFont">{{comments.length}}
                             {{format_plural "comment" comments.length}}</a></a>
                 </div>
+                {{!-- {{else}}
+                <h5 class="p-3 textFont text-secondary">no favorites to show yet!</h5>
+                {{/if}} --}}
                 {{/each}}
-                {{else}} --}}
-            <h5 class="p-3 textFont text-secondary">no favorites to show yet!</h5>
-            {{!-- {{/if}} --}}
+                </br>
             </section>
         </div>
 
