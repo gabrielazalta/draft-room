@@ -46,7 +46,7 @@ This application is under the [ISC](https://opensource.org/licenses/ISC) license
 
 ## Website & Screenshot
 
-[Deploy Here](https://sleepy-island-61088.herokuapp.com/dashboard)
+[Deploy Here](https://sleepy-island-61088.herokuapp.com/)
 
 
 ![Screenshot of the Draft Room website](./public/images/mockup.png)
