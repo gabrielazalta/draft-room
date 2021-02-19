@@ -18,7 +18,10 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login'
+    // , {validate(username, password);
+    // }
+    )
 });
 
 router.get('/new-post', (req, res) => {

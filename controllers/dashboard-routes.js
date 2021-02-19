@@ -59,12 +59,7 @@ router.get('/', withAuth, (req, res) => {
             'user_id',
             'title',
             'created_at',
-            // [sequelize.literal('(SELECT * FROM post INNER JOIN vote on vote.post_id = post.id where vote.user_id = :id )', {
-            //     replacements: {
-            //         id: { req.session.user_id }
-            //     },
-            //     type: QueryTypes.SELECT
-            // }), 'vote_count'],
+            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
         ],
         include: [{
                 model: Comment,
