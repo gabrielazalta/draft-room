@@ -8,7 +8,7 @@ This is a CMS-style blog site created so that beer lovers can have a space to pu
 * [Installation](#Installation)
 * [Built With](#Built-With)
 * [License](#License)
-* [Website Screenshot](#Website-Screenshot)
+* [Website & Screenshot](#Website-&-Screenshot)
 * [Contribution](#Contribution)
 
 ## Installation
@@ -44,8 +44,12 @@ Once done, and have cloned or forked from this repo, be sure to source your sche
 ## License
 This application is under the [ISC](https://opensource.org/licenses/ISC) license.
 
-## Website Screenshot
+## Website & Screenshot
+
+[Deploy Here](https://sleepy-island-61088.herokuapp.com/)
+
+
 ![Screenshot of the Draft Room website](./public/images/mockup.png)
 
 ## Contribution
-Made with ❤️ (and a few 🍺's) by [Jessica Coneff](https://github.com/jconeff), [Dalton Morel](https://github.com/Dmorrel7), [Ruben Matamoros](https://github.com/valiantcreative33), and [Gabriela Zalta](https://github.com/gabrielazalta).
+Made with ❤️ (and a few 🍺's) by [Jessica Coneff](https://github.com/jconeff), [Dalton Morrel](https://github.com/Dmorrel7), [Ruben Matamoros](https://github.com/valiantcreative33), and [Gabriela Zalta](https://github.com/gabrielazalta).
