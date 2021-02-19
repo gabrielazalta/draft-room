@@ -36,6 +36,7 @@ Vote.init(
   }
   
   
+  
 );
 
 module.exports = Vote;
