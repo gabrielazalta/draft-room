@@ -8,7 +8,7 @@ This is a CMS-style blog site created so that beer lovers can have a space to pu
 * [Installation](#Installation)
 * [Built With](#Built-With)
 * [License](#License)
-* [Website Screenshot](#Website-Screenshot)
+* [Website & Screenshot](#Website-&-Screenshot)
 * [Contribution](#Contribution)
 
 ## Installation
